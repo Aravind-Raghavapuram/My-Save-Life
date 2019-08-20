@@ -1,0 +1,26 @@
+[
+  {
+    "name": "crocin",
+    "type": "tablet",
+    "usage": "fever",
+    "company": "cipla",
+    "quantity": 20,
+    "price": 45.0
+  },
+  {
+    "name": "vicks",
+    "type": "tablet",
+    "usage": "cough",
+    "company": "cipla",
+    "quantity": 5,
+    "price": 1.5
+  },
+  {
+    "name": "paracetemol",
+    "type": "tablet",
+    "usage": "fever",
+    "company": "cipla",
+    "quantity": 60,
+    "price": 5.0
+  }
+]

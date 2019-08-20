@@ -1,0 +1,147 @@
+<div class="row">
+  <div class="col-md-10 offset-md-1 col-sm-12">
+    <div class="row" style="margin-top: 100px;">
+
+      <div class="col-md-6 col-xs-7" align="right">
+        <!-- <select class="sb bg-primary" (change)="filterForeCasts($event.target.value)">
+          <option *ngFor="let details of mdetails" value={{details}}>
+            {{details}}
+          </option>
+        </select> -->
+        <input class="st" type="text" placeholder="Search Blood Group" [(ngModel)]="searchTerm">
+        <button type="button" class="bg-primary si"><i class="icon ion-md-search"></i></button>
+      </div>
+    </div>
+    <table class="table bg-dark text-light mx-auto">
+      <thead>
+        <tr>
+          <th> Donor Name</th>
+          <th>Phone</th>
+          <th>Email</th>
+          <th>Blood Group</th>
+          <th>Gender</th>
+
+      </thead>
+      <tbody>
+
+        <tr *ngFor="let i of medi | search:searchTerm">
+          <td scope="row">{{i.dfn}}</td>
+          <td>{{i.phone}}</td>
+
+          <td>{{i.em}}</td>
+
+          <td>{{i.selectbg}}</td>
+         <td>{{i.gender}}</td>
+
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="addm" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+
+      </div>
+      <div class="modal-body">
+        <form #formRef="ngForm" (ngSubmit)="onSubmit(formRef.value)">
+          <div class="form-group">
+            <label class=" control-label" for="medicine">Medicine Name</label>
+            <input type="text" class="form-control" [(ngModel)]="medicine" name="name" id="medicine" placeholder="Medicine Name">
+
+          </div>
+
+          <div class="form-group">
+            <label class=" control-label" for="type">Medicine type</label>
+            <input type="text" class="form-control" [(ngModel)]="type" name="type" id="type" placeholder="Medicine Type">
+
+          </div>
+          <div class="form-group">
+            <label class=" control-label" for="use">Medicine Usage</label>
+            <input type="text" class="form-control" [(ngModel)]="use" name="usage" id="use" placeholder="Medicine Use">
+
+          </div>
+          <div class="form-group">
+            <label class="control-label" for="company2">Medicine Company</label>
+            <input type="text" class="form-control" [(ngModel)]="company" name="company" id="company2" placeholder="Medicine Company">
+
+          </div>
+          <div class="form-group">
+            <label class="control-label" for="quantity2">Medicine Quantity</label>
+            <input type="text" class="form-control" [(ngModel)]="quantity" name="quantity" id="quantity2" placeholder="Medicine Quantity">
+          </div>
+          <div class="form-group">
+            <label class=" control-label" for="price2">Medicine Price</label>
+            <input type="text" class="form-control" [(ngModel)]="price" name="price" id="price2" placeholder="Medicine Price">
+
+          </div>
+          <div class="row">
+            <div class="col" align="center">
+              <button type="submit" class="btn btn-success">Save</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="edit" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close text-danger" data-dismiss="modal" aria-label="Close">X
+        </button>
+      </div>
+      <div class="modal-body">
+        <form #eref="ngForm" (ngSubmit)="save(eref.value)">
+            <input type="hidden" [(ngModel)]="e._id" name="_id" value="{{e._id}}">
+          <div class="form-group">
+            <label class=" control-label" for="medi">Medicine Name</label>
+            <input type="text" class="form-control" [(ngModel)]="e.name" name="name" id="medi" value="{{e.name}}">
+
+          </div>
+
+          <div class="form-group">
+            <label class=" control-label" for="type2">Medicine type</label>
+            <input type="text" class="form-control" [(ngModel)]="e.type" name="type" id="type2" value="{{e.type}}">
+
+          </div>
+          <div class="form-group">
+            <label class=" control-label" for="use2">Medicine Usage</label>
+            <input type="text" class="form-control" [(ngModel)]="e.usage" name="usage" id="use2" value="{{e.usage}}">
+
+          </div>
+          <div class="form-group">
+            <label class="control-label" for="company">Medicine Company</label>
+            <input type="text" class="form-control" [(ngModel)]="e.company" name="company" id="company" value="{{e.company}}">
+
+          </div>
+          <div class="form-group">
+            <label class="control-label" for="quantity">Medicine Quantity</label>
+            <input type="text" class="form-control" [(ngModel)]="e.quantity" name="quantity" id="quantity" value="{{e.quantity}}">
+          </div>
+          <div class="form-group">
+            <label class=" control-label" for="price">Medicine Price</label>
+            <input type="text" class="form-control" [(ngModel)]="e.price" name="price" id="price" value="{{e.price}}">
+
+          </div>
+          <div class="row">
+            <div class="col" align="center">
+              <button type="submit" class="btn btn-success" >Save</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

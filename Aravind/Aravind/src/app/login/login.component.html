@@ -1,0 +1,35 @@
+<div class="row" style="background-image: linear-gradient(rgba(0, 0, 0, 0.514),#000)">
+  <div class="col-8 offset-2 mb-5 pb-5" style="background-image: url(https://png.pngtree.com/thumb_back/fh260/back_pic/00/02/92/70561bd49283afe.jpg);width: 100%;height: 400px;background-size: cover; background-repeat: no-repeat;margin-top: 100px;">
+    <div class="row">
+      <div class="col-md-6 col-sm-0"></div>
+      <div class="col-md-6 col-sm-12 mt-3 pt-5 ">
+        <form class="form" #lf="ngForm" (ngSubmit)="login(lf.value)">
+          <div class="form-group">
+            <label for="un">USERNAME :*</label>
+            <input type="text" class="form-control" name="un" id="un" placeholder="Enter User Name" [(ngModel)]=name #u="ngModel" required>
+            <label class="text-danger" *ngIf="u.touched && u.pristine">
+              Username required
+            </label>
+          </div>
+          <div class="form-group">
+            <label for="pw">Password :*</label>
+            <input type="password" class="form-control" name="pwd" id="pw" placeholder="Enter Password" [(ngModel)]=pass #p="ngModel" required>
+            <div class="form-check form-check-inline">
+              <label class="form-check-label" >
+                <input type="checkbox" onchange="document.getElementById('pw').type = this.checked ? 'text' : 'password'"
+                  class="form-check-input" name="sp" id="sp" value="checkedValue">
+                Show Password
+              </label>
+              
+            </div>
+            <label class="text-danger" *ngIf="p.touched && p.pristine">
+              Password required
+            </label>
+          </div>
+          <button type="submit" class="btn btn-success" [disabled]="lf.invalid" >Login</button>
+          <button type="button" class="btn btn-warning" routerLink="reg" style="margin-left: 63%;">Register</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

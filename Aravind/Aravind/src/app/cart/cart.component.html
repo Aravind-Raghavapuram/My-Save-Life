@@ -1,0 +1,61 @@
+<div class="row">
+  <div class="col-md-8 offset-md-2 col-xs-12">
+    <div class="jumbotron">
+      <ul class="list-group">
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label for="1">Customer Name</label>
+                <input type="text" name="cuname" id="1" class="form-control"[(ngModel)]="cuname">
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label for="2">Customer Ph.No</label>
+                <input type="text" name="cuno" id="2" class="form-control"[(ngModel)]="cuno">
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label for="3">Customer Email</label>
+                <input type="email" name="cuemail" id="3" class="form-control"[(ngModel)]="cuemail">
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="list-group-item" *ngFor="let i of cdata">
+          <div class="row">
+            <div class="col">
+              <p>MedicineName : {{i.name}}</p>
+              <p>Quantity : {{i.rq}}</p>
+              <p>Price : {{i.price}}</p>
+            </div>
+            <div class="col">
+              <div class="row">
+                <div class="col text-right" align="right">
+                  <p>d</p>
+                </div>
+              </div>
+              <p>{{i.rq}} X {{i.price}}</p>
+              <h5 class="text-warning">{{i.rq*i.price}}</h5>
+            </div>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col-sm-4 col-xs-6">
+              <p>No.of Items : {{l}}</p>
+            </div>
+            <div class="col-sm-4 col-xs-6">
+              <p>Total : {{ta}}</p>
+            </div>
+            <div class="col-sm-4 col-xs-12">
+                <button type="button" class="btn btn-primary">Make Payment</button>
+              </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

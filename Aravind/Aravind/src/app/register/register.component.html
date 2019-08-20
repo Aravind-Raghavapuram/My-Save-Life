@@ -1,0 +1,91 @@
+<div class="row" style="background-image: linear-gradient(rgba(0, 0, 0, 0.281),#000); height: 100%;overflow:hidden;">
+  <div class="col" style="margin-bottom: 10%;">
+    <div class="row">
+      <div class="col-4 offset-4 mt-md-5 mb-md-5  pt-md-5 text-light" style=" background-image: url(https://supsystic-42d7.kxcdn.com/_assets/forms/img/bg/bg_support_form.jpg);background-size: cover;margin-top:20%;padding: auto;">
+        <div class="container">
+          <form #rf="ngForm" (ngSubmit)="register(rf.value)">
+            <div class="form-group">
+              <label for="pn">Phone :</label>
+              <input type="text" class="form-control" name="phone" id="pn" placeholder="Enter Phone"  [(ngModel)]=phone  #pn="ngModel" required>
+              <label class="text-danger" *ngIf="pn.touched && (pn.pristine || pn.value=='')">
+              Phone Required
+              </label>
+
+            </div>
+            <div class="form-group">
+              <label for="em">Email :</label>
+              <input type="email" class="form-control" name="em" id="em" placeholder="Enter Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" [(ngModel)]=email #e="ngModel" required>
+              <label class="text-danger" *ngIf="e.touched && (e.pristine || e.value=='')">
+                Email Required
+              </label>
+              <label class="text-danger" *ngIf="e.invalid && e.dirty && rp.value!=''">
+                Enter valid Email
+              </label>
+            </div>
+
+            <div class="form-group">
+              <label for="un">Donors Full Name :</label>
+              <input type="text" class="form-control" name="dfn" id="dfn" placeholder="Enter Full Name" [(ngModel)]=dfname
+                required #fn="ngModel">
+              <label class="text-danger" *ngIf="fn.touched && (fn.pristine || fn.value=='')">
+                Donors Full Name  Required
+              </label>
+            </div>
+
+            <div class="form-group">
+              <label for="exampleSelect1">Blood Group</label>
+              <select name="selectbg" [(ngModel)]="selectbg" class="form-control" id="exampleSelect1">
+                <option *ngFor="let item of bg" [value]="item">{{item}}</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="un">USERNAME :</label>
+              <input type="text" class="form-control" name="un" id="un" placeholder="Enter User Name" [(ngModel)]=uname
+                required #u="ngModel">
+              <label class="text-danger" *ngIf="u.touched && (u.pristine || u.value=='')">
+                UserName Required
+              </label>
+            </div>
+
+            <div class="form-group">
+              <label for="pw">Password :</label>
+              <input type="password" class="form-control" name="pwd" id="pw" placeholder="Enter Password" [(ngModel)]=pwd #p="ngModel" required>
+              <div class="text-danger" *ngIf="p.touched && (p.pristine || p.value=='')">
+                Password Required
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="rp">ReEnter Password :</label>
+              <input type="password" class="form-control" name="cpw" id="rp" placeholder="Re-Enter Password"  [(ngModel)]=rpwd #rp="ngModel"  required>
+              <div class="text-danger" *ngIf="rp.touched && (rp.pristine || rp.value=='')">
+                Password Required
+              </div>
+              <div class="text-danger" *ngIf="rp.dirty && ( rp.value!=p.value) && rp.value!=''">
+                Password not Matched
+              </div>
+            </div>
+            <div class="form-check form-check-inline">
+              <label class="form-check-label">
+                <input class="form-check-input" type="radio" name="gender" value="male" [(ngModel)]=gender required> Male
+              </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <label class="form-check-label">
+                <input class="form-check-input" type="radio" name="gender" value="female" [(ngModel)]=gender> Female
+              </label>
+            </div>
+            <div class="form-group row">
+              <div class="offset-sm-4 col-sm-4">
+                <button type="submit" class="btn btn-success mt-3" [disabled]="rf.invalid || ( rp.value!=p.value)">Register</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<select [(ngModel)]="selectbg">
+  <option *ngFor="let item of bg" [value]="item">{{item}}</option>
+</select>

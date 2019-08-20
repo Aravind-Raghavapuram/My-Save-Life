@@ -1,0 +1,109 @@
+<div class="row" style="margin-top: 100px;">
+  <div class='col-md-6 col-sm-12'>
+    <button type="button" class="btn btn-warning " data-toggle="modal" data-target="#com">Add
+      Company</button></div>
+  <div class="col-md-6 col-sm-12" align="right">
+    <input class="st" type="text" [(ngModel)]="searchTerm" placeholder="Search Company Here">
+    <button type="button" class="bg-primary si"><i class="icon ion-md-search"></i></button>
+  </div>
+</div>
+
+<div class="modal fade" id="com">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-body">
+
+        <form #formRef="ngForm" (ngSubmit)="add(formRef.value)">
+          <div class="form-group">
+            <label class=" control-label" for="comn">Company Name</label>
+            <input type="text" class="form-control" [(ngModel)]="comn" name="cname" id="comn" placeholder="Company Name">
+          </div>
+          <div class="form-group">
+            <label class="control-label" for="location">Location</label>
+            <input type="text" class="form-control" [(ngModel)]="location" name="clocation" id="location" placeholder="location">
+          </div>
+          <div class="form-group">
+            <label class="control-label" for="company">Email id</label>
+            <input type="email" class="form-control" [(ngModel)]="email" name="cemail" id="email" placeholder="Email">
+          </div>
+          <div class="form-group">
+            <label class="control-label" for="contact">Contact Number</label>
+            <input type="number" class="form-control" [(ngModel)]="contact" name="cnumber" id="contact" placeholder="Contact Number ">
+          </div>
+          <div class="row">
+            <div class="col " align="center">
+              <button type="submit" class="btn btn-info">Add</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="row">
+  <div class="col">
+    <table class="table bg-dark text-light">
+
+      <thead>
+        <th>Company Name</th>
+        <th>Location</th>
+        <th>Email-id</th>
+        <th>Contact Number</th>
+        <th>Delete</th>
+        <th>Edit</th>
+      </thead>
+
+      <tr *ngFor="let i of com | search:searchTerm:s">
+        <td>{{i.cname}}</td>
+        <td>{{i.clocation}}</td>
+        <td>{{i.cemail}}</td>
+        <td>{{i.cnumber}}</td>
+        <td><button type="button" class="btn btn-danger" (click)="deletec(i)"> X </button></td>
+        <td> <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit" (click)="toEdit(i)">Edit</button></td>
+      </tr>
+    </table>
+  </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="edit" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close text-danger" data-dismiss="modal" aria-label="Close">X
+        </button>
+      </div>
+      <div class="modal-body">
+        <form #formRef1="ngForm" (ngSubmit)="save(formRef1.value)">
+          <input type="hidden" [(ngModel)]="e._id" name="_id" value="{{e._id}}">
+          <div class="form-group">
+            <label class="control-label" for="comn">Company Name</label>
+            <input type="text" class="form-control" [(ngModel)]="e.cname" name="cname" id="comn" value="{{e.cname}}">
+          </div>
+          <div class="form-group">
+            <label class="control-label" for="location">Location</label>
+            <input type="text" class="form-control" [(ngModel)]="e.clocation" name="clocation" id="location" value="{{e.clocation}}">
+          </div>
+          <div class="form-group">
+            <label class="control-label" for="company">Email id</label>
+            <input type="email" class="form-control" [(ngModel)]="e.cemail" name="cemail" id="email" value="{{e.cemail}}">
+          </div>
+          <div class="form-group">
+            <label class="control-label" for="contact">Contact Number</label>
+            <input type="number" class="form-control" [(ngModel)]="e.cnumber" name="cnumber" id="contact" value="{{e.cnumber}}">
+          </div>
+          <div class="row">
+            <div class="col " align="center">
+              <button type="submit" class="btn btn-info">Save</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
